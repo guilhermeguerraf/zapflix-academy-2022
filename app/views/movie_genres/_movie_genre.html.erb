@@ -1,0 +1,28 @@
+<tr id="<%= dom_id movie_genre %>">
+  <td><%= movie_genre.name %></td>
+  <td><%= movie_genre.created_at %></td>
+  <td>
+    <%= link_to "Editar", edit_movie_genre_path(movie_genre) %>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+      Excluir
+    </button>
+  </td>
+</tr>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header dark-gray-5">
+        <h5 class="modal-title" id="deleteModalLabel">Atenção</h5>
+      </div>
+      <div class="modal-body dark-gray-6">
+        Deseja realmente excluir este item?
+        Após a exclusão não será mais possível recuperar os dados!
+      </div>
+      <div class="modal-footer dark-gray-5">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <%= button_to "Excluir", movie_genre, method: :delete, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

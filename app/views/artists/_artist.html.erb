@@ -1,0 +1,8 @@
+<tr id="<%= dom_id artist %>">
+  <td><%= artist.name %></td>
+  <td><%= artist.created_at %></td>
+  <td>
+    <%= link_to "Edit this artist", edit_artist_path(artist) %>
+    <%= button_to "Destroy this movie artist", artist, method: :delete %>
+  </td>
+</tr>

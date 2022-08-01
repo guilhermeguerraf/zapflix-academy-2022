@@ -1,0 +1,23 @@
+<%= form_with(model: director) do |form| %>
+  <% if director.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(director.errors.count, "error") %> prohibited this director from being saved:</h2>
+
+      <ul>
+        <% director.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center">
+    <%= link_to "Cancelar", directors_path, class: "btn btn-secondary" %>
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
+  </div>
+<% end %>
