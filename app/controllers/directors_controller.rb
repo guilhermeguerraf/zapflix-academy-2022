@@ -25,11 +25,9 @@ class DirectorsController < ApplicationController
 
     respond_to do |format|
       if @director.save
-        format.html { redirect_to director_url(@director), notice: "Director was successfully created." }
-        format.json { render :show, status: :created, location: @director }
+        format.html { redirect_to directors_path, notice: "Director was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @director.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +36,9 @@ class DirectorsController < ApplicationController
   def update
     respond_to do |format|
       if @director.update(director_params)
-        format.html { redirect_to director_url(@director), notice: "Director was successfully updated." }
-        format.json { render :show, status: :ok, location: @director }
+        format.html { redirect_to directors_path, notice: "Director was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @director.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +48,7 @@ class DirectorsController < ApplicationController
     @director.destroy
 
     respond_to do |format|
-      format.html { redirect_to directors_url, notice: "Director was successfully destroyed." }
+      format.html { redirect_to directors_path, notice: "Director was successfully destroyed." }
       format.json { head :no_content }
     end
   end

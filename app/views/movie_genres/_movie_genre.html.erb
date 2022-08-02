@@ -1,28 +1,30 @@
-<tr id="<%= dom_id movie_genre %>">
+<tr id="<%= dom_id movie_genre %>" class="align-middle">
   <td><%= movie_genre.name %></td>
-  <td><%= movie_genre.created_at %></td>
+  <td><%=l movie_genre.created_at %></td>
   <td>
-    <%= link_to "Editar", edit_movie_genre_path(movie_genre) %>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
-      Excluir
+    <%= link_to edit_movie_genre_path(movie_genre), class: "btn btn-link" do %>
+      <%= image_tag 'icons/editIcon.png' %>
+    <% end %>
+    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteMovieGenre<%= movie_genre.id %>">
+      <%= image_tag 'icons/deleteIcon.png' %>
     </button>
   </td>
-</tr>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header dark-gray-5">
-        <h5 class="modal-title" id="deleteModalLabel">Atenção</h5>
-      </div>
-      <div class="modal-body dark-gray-6">
-        Deseja realmente excluir este item?
-        Após a exclusão não será mais possível recuperar os dados!
-      </div>
-      <div class="modal-footer dark-gray-5">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <%= button_to "Excluir", movie_genre, method: :delete, class: "btn btn-primary" %>
+  <div class="modal fade" id="deleteMovieGenre<%= movie_genre.id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dark-gray-5">
+          <h5 class="modal-title" id="deleteModalLabel">Atenção</h5>
+        </div>
+        <div class="modal-body dark-gray-6">
+          <strong>Deseja realmente excluir este item?</strong>
+          <p>Após a exclusão não será mais possível recuperar os dados!</p>
+        </div>
+        <div class="modal-footer dark-gray-5">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <%= button_to "Excluir", movie_genre, method: :delete, class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</tr>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :movies, only: [:index, :new, :edit, :destroy]
-  resources :movie_genres, only: [:index, :new, :edit, :destroy]
-  resources :directors, only: [:index, :new, :edit, :destroy]
-  resources :artists, only: [:index, :new, :edit, :destroy]
+  resources :movies, except: [:show]
+  resources :movie_genres, except: [:show]
+  resources :directors, except: [:show]
+  resources :artists, except: [:show]
   resource :home, only: :index
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

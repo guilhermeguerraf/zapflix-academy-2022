@@ -1,8 +1,30 @@
-<tr id="<%= dom_id director %>">
+<tr id="<%= dom_id director %>" class="align-middle">
   <td><%= director.name %></td>
-  <td><%= director.created_at %></td>
+  <td><%=l director.created_at.to_date %></td>
   <td>
-    <%= link_to "Edit this director", edit_director_path(director) %>
-    <%= button_to "Destroy this movie director", director, method: :delete %>
+    <%= link_to edit_director_path(director), class: "btn btn-link" do %>
+      <%= image_tag 'icons/editIcon.png' %>
+    <% end %>
+    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteDirector<%= director.id %>">
+      <%= image_tag 'icons/deleteIcon.png' %>
+    </button>
   </td>
+
+  <div class="modal fade" id="deleteDirector<%= director.id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dark-gray-5">
+          <h5 class="modal-title" id="deleteModalLabel">Atenção</h5>
+        </div>
+        <div class="modal-body dark-gray-6">
+          <strong>Deseja realmente excluir este item?</strong>
+          <p>Após a exclusão não será mais possível recuperar os dados!</p>
+        </div>
+        <div class="modal-footer dark-gray-5">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <%= button_to "Excluir", director, method: :delete, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </tr>
