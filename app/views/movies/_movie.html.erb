@@ -1,16 +1,18 @@
-<tr id="<%= dom_id movie_genre %>" class="align-middle">
-  <td><%= movie_genre.name %></td>
-  <td><%=l movie_genre.created_at %></td>
+<tr id="<%= dom_id movie %>" class="align-middle">
+  <td><%= movie.title %></td>
+  <td><%= movie.director_id %></td>
+  <td><%= movie.movie_genre_id %></td>
+  <td><%=l movie.published_at %></td>
   <td>
-    <%= link_to edit_movie_genre_path(movie_genre), class: "btn btn-link" do %>
+    <%= link_to edit_movie_path(movie), class: "btn btn-link" do %>
       <%= image_tag 'icons/editIcon.png' %>
     <% end %>
-    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteMovieGenre<%= movie_genre.id %>">
+    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteMovie<%= movie.id %>">
       <%= image_tag 'icons/deleteIcon.png' %>
     </button>
   </td>
-
-  <div class="modal fade" id="deleteMovieGenre<%= movie_genre.id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  
+  <div class="modal fade" id="deleteMovie<%= movie.id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header dark-gray-5">
@@ -22,7 +24,7 @@
         </div>
         <div class="modal-footer dark-gray-5 px-4 py-3">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <%= button_to "Excluir", movie_genre, method: :delete, class: "btn btn-primary" %>
+          <%= button_to "Excluir", movie, method: :delete, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :movies
   resources :movies, except: [:show]
   resources :movie_genres, except: [:show]
   resources :directors, except: [:show]

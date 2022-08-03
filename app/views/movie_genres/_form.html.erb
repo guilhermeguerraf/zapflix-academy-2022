@@ -1,4 +1,4 @@
-<%= form_with(model: movie_genre) do |form| %>
+<%= form_with(model: movie_genre, class: "row g-3") do |form| %>
   <% if movie_genre.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(movie_genre.errors.count, "error") %> prohibited this movie_genre from being saved:</h2>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name, style: "display: block" %>
+  <div class="col-12 form-group">
+    <%= form.label :name, class: "form-label" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="d-flex justify-content-end align-items-center">
+  <div class="col-12 mt-4 d-flex gap-3 justify-content-end align-items-center">
     <%= link_to "Cancelar", movie_genres_path, class: "btn btn-secondary" %>
     <%= form.submit class: "btn btn-primary" %>
   </div>

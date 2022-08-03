@@ -1,6 +1,6 @@
 # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/pt-BR.yml
 ---
-pt-BR:
+"pt-BR":
   activerecord:
     models:
       artist:
@@ -12,6 +12,9 @@ pt-BR:
       movie_genre:
         one: "Gênero"
         other: "Gêneros"
+      movie:
+        one: "Filme"
+        other: "Filmes"
     attributes:
       artist:
         name: "Nome"
@@ -23,6 +26,16 @@ pt-BR:
         updated_at: "Atualizado em"
       movie_genre:
         name: "Nome"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      movie:
+        title: "Título"
+        cover_url: "Capa"
+        published_at: "Estreia"
+        director_id: "Diretor"
+        movie_genre_id: "Gênero"
+        sinopse: "Sinopse"
+        cast_id: "Elenco"
         created_at: "Criado em"
         updated_at: "Atualizado em"
     errors:

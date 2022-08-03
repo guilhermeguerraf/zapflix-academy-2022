@@ -1,21 +1,26 @@
-<div>
-  <div class="d-flex justify-content-between align-items-center">
-    <h2>Gêneros</h2>
-    <%= link_to "+ Novo", new_movie_genre_path, class: "btn btn-primary" %>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+<% end %>
 
-  <table id="movie_genres" class="table table-sm table-hover">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Criado em</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @movie_genres.map do |movie_genre| %>
-        <%= render movie_genre %>
-      <% end %>
-    </tbody>
-  </table>
+<div class="d-flex justify-content-between align-items-center">
+  <h2>Gêneros</h2>
+  <%= link_to "+ Novo", new_movie_genre_path, class: "btn btn-primary" %>
 </div>
+
+<table id="movie_genres" class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Criado em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movie_genres.map do |movie_genre| %>
+      <%= render movie_genre %>
+    <% end %>
+  </tbody>
+</table>

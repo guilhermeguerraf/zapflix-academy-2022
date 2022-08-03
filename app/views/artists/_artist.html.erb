@@ -1,6 +1,6 @@
 <tr id="<%= dom_id artist %>" class="align-middle">
   <td><%= artist.name %></td>
-  <td><%=l artist.created_at.to_date %></td>
+  <td><%=l artist.created_at %></td>
   <td>
     <%= link_to edit_artist_path(artist), class: "btn btn-link" do %>
       <%= image_tag 'icons/editIcon.png' %>
@@ -16,11 +16,11 @@
         <div class="modal-header dark-gray-5">
           <h5 class="modal-title" id="deleteModalLabel">Atenção</h5>
         </div>
-        <div class="modal-body dark-gray-6">
+        <div class="modal-body dark-gray-6 px-3 py-5">
           <strong>Deseja realmente excluir este item?</strong>
           <p>Após a exclusão não será mais possível recuperar os dados!</p>
         </div>
-        <div class="modal-footer dark-gray-5">
+        <div class="modal-footer dark-gray-5 px-4 py-3">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <%= button_to "Excluir", artist, method: :delete, class: "btn btn-primary" %>
         </div>

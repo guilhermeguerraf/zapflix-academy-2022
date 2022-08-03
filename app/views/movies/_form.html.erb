@@ -1,0 +1,60 @@
+<%= form_with(model: movie, class: "row g-3") do |form| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-12 form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="col-6 form-group">
+    <%= form.label :cover_url, class: "form-label" %>
+    <%= form.text_field :cover_url, class: "form-control" %>
+  </div>
+
+  <div class="col-6 form-group">
+    <%= form.label :published_at, class: "form-label" %>
+    <%= form.date_field :published_at, class: "form-control" %>
+  </div>
+
+  <div class="col-6 form-group">
+    <%= form.label :director_id, class: "form-label" %>
+    <%= form.collection_select(:director_id, Director.all, :id, :name, { prompt: true }, { class: "form-select" }) %>
+  </div>
+
+  <div class="col-6 form-group">
+    <%= form.label :movie_genre_id, class: "form-label" %>
+    <%= form.collection_select(:movie_genre_id, MovieGenre.all, :id, :name, { prompt: true }, { class: "form-select" }) %>
+  </div>
+
+  <div class="col-12 form-group">
+    <%= form.label :sinopse, class: "form-label" %>
+    <%= form.text_area :sinopse, class: "form-control" %>
+  </div>
+
+  <div class="col-12 form-group">
+    <%= form.label :cast_id, class: "form-label" %>
+    <div class="d-flex flex-wrap gap-3">
+      <%= form.collection_check_boxes(:cast_id, Artist.all, :id, :name, { multiple: true }, { class: "form-check-input" }) do |b|%>
+        <div class="form-check">
+          <%= b.label(class: "form-check-label") { b.check_box + b.text } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="col-12 mt-4 d-flex gap-3 justify-content-end align-items-center">
+    <%= link_to "Cancelar", movies_path, class: "btn btn-secondary" %>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

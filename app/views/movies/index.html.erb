@@ -6,21 +6,23 @@
 <% end %>
 
 <div class="d-flex justify-content-between align-items-center">
-  <h2>Diretores</h2>
-  <%= link_to "+ Novo", new_director_path, class: "btn btn-primary" %>
+  <h2>Filmes</h2>
+  <%= link_to "+ Novo", new_movie_path, class: "btn btn-primary" %>
 </div>
 
-<table id="directors" class="table table-sm table-hover">
+<table id="movies" class="table table-sm table-hover">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Criado em</th>
+      <th>Título</th>
+      <th>Diretor</th>
+      <th>Gênero</th>
+      <th>Estreia</th>
       <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    <% @directors.each do |director| %>
-      <%= render director %>
+    <% @movies.each do |movie| %>
+      <%= render movie %>
     <% end %>
   </tbody>
 </table>
