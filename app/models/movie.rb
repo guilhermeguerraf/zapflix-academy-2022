@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
   belongs_to :director
   belongs_to :movie_genre
-  belongs_to :artist
+  has_and_belongs_to_many :artists
 end

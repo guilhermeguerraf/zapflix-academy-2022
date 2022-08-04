@@ -1,13 +1,16 @@
 <div class="card mb-3 col-12 dark-gray-6">
   <div class="row g-0 rounded dark-gray-6">
     <div class="col-md-6 mainCard">
-      <%= image_tag 'main-bg.png' %>
+      <%= image_tag @movies[0].cover_url %>
     </div>
     <div class="col-md-6">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <strong class="card-title"><%= @movies[0].title %></strong>
+        <p class="card-text"><b>Diretor:</b> <span><%= @movies[0].director[:name] %></span></p>
+        <p class="card-text"><b>Estreia:</b> <span><%=l @movies[0].published_at %></span></p>
+        <p class="card-text"><b>Gênero:</b> <span><%= @movies[0].movie_genre[:name] %></span></p>
+        <p class="card-text mt-3 mb-4"><b>Elenco:</b> <span><%= @movies[0].artists.collect { |a| a.name }.first(5).join(' - ') %></span></p>
+        <p class="card-text text-wrap text-truncate"><%= @movies[0].sinopse %></p>
       </div>
     </div>
   </div>
@@ -15,31 +18,34 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="card dark-gray-6">
-      <%= image_tag 'cover1.png', class: 'card-img-top' %>
+      <%= image_tag @movies[1].cover_url, class: 'card-img-top' %>
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
+        <strong class="card-title text-truncate"><%= @movies[1].title %></strong>
+        <p class="card-text"><b>Diretor:</b> <span><%= @movies[1].director[:name] %></span></p>
+        <p class="card-text mb-3"><b>Estreia:</b> <span><%=l @movies[1].published_at %></span></p>
+        <p class="card-text text-wrap text-truncate"><%= @movies[1].sinopse %></p>
       </div>
     </div>
   </div>
   <div class="col-sm-4">
     <div class="card dark-gray-6">
-      <%= image_tag 'cover2.png', class: 'card-img-top' %>
+      <%= image_tag @movies[2].cover_url, class: 'card-img-top' %>
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
+        <strong class="card-title text-truncate"><%= @movies[2].title %></strong>
+        <p class="card-text"><b>Diretor:</b> <span><%= @movies[2].director[:name] %></span></p>
+        <p class="card-text mb-3"><b>Estreia:</b> <span><%=l @movies[2].published_at %></span></p>
+        <p class="card-text text-wrap text-truncate"><%= @movies[2].sinopse %></p>
       </div>
     </div>
   </div>
   <div class="col-sm-4">
     <div class="card dark-gray-6">
-      <%= image_tag 'cover3.png', class: 'card-img-top' %>
+      <%= image_tag @movies[3].cover_url, class: 'card-img-top' %>
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias porro amet consectetur reprehenderit possimus unde nemo quasi nisi, doloremque id nostrum enim atque, debitis quaerat itaque non quibusdam perferendis dolor.
-        </p>
+        <strong class="card-title text-truncate"><%= @movies[3].title %></strong>
+        <p class="card-text"><b>Diretor:</b> <span><%= @movies[3].director[:name] %></span></p>
+        <p class="card-text mb-3"><b>Estreia:</b> <span><%=l @movies[3].published_at %></span></p>
+        <p class="card-text text-wrap text-truncate"><%= @movies[3].sinopse %></p>
       </div>
     </div>
   </div>
