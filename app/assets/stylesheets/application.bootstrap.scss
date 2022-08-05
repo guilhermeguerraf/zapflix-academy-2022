@@ -144,18 +144,32 @@ main {
   overflow-y: scroll;
   margin: 0;
 }
+.carousel {
+  margin-bottom: calc(23px + 1rem) !important;
+
+  .carousel-indicators {
+    bottom: -23px;
+    margin-bottom: 0;
+  }
+}
 
 .card {
   color: #d1d1d6;
   overflow: hidden;
 
   .mainCard {
+    min-height: 316px;
+    max-height: 316px;
+    position: relative;
+    overflow: hidden;
+
     > img {
       height: auto;
       width: 100%;
       max-width: 100%;
-      max-height: 316px;
-      position: relative;
+      top: 20%;
+      transform: translateY(-20%);
+      position: absolute;
 
       &::before {
         content: "";
@@ -178,14 +192,21 @@ main {
   }
 
   .card-body {
-    > strong.card-title {
-      max-width: 100%;
-      display: inline-block;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 27px;
-      text-overflow: ellipsis;
-      color: #f2f2f7;
+    .card-title {
+      > span.badge.text-bg-primary {
+        font-size: 12px;
+        line-height: 16px;
+        background-color: #ff375f !important;
+      }
+
+      > strong {
+        max-width: 100%;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 27px;
+        text-overflow: ellipsis;
+        color: #f2f2f7;
+      }
     }
 
     > p.card-text {
@@ -294,21 +315,10 @@ form {
     > .modal-content {
       border: none;
       box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.25);
+      color: #e5e5ea;
 
       > .modal-header {
-        justify-content: center;
         border-bottom: none;
-
-        > .modal-title::before {
-          content: "";
-          display: inline-block;
-          width: 24px;
-          height: 100%;
-          background-image: url("../images/icons/warningIcon.png");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
       }
 
       > .modal-body {
