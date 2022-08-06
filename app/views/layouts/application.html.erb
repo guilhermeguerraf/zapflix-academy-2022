@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ZapFlix</title>
+    <title>Zapflix</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,12 +11,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="text-white dark-gray-5">
-    <main>
-      <%= render 'sidebar' %>
-      <div id="contentWrapper" class="container col-md-10 bg-dark-gray-5">
-        <%= yield %>
-      </div>
+  <body class="container text-white dark-gray-5">
+    <header>
+      <%= render 'navbar' %>
+    </header>
+    <main class="bg-dark-gray-5 mb-3">
+      <%= yield %>
     </main>
+    <footer>
+      <p>Feito com ♥ durante o Kazap Academy 2022</p>
+    </footer>
   </body>
 </html>

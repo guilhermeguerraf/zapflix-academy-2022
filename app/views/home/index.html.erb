@@ -1,14 +1,13 @@
 <% if @movies.size > 0 %>
   <div id="carouselMovies" class="carousel slide" data-bs-ride="true">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <% @movies.last(4).reverse.each_with_index do |movie, i| %>
+        <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i + 1 %>" <%= "aria-current=true class=active" if i == 0 %>></button>
+      <% end %>
     </div>
     <div class="carousel-inner">
-      <% @movies.each do |movie| %>
-        <div class="carousel-item <%= "active" if movie.id == @movies.first.id %>">
+      <% @movies.last(4).reverse.each do |movie| %>
+        <div class="carousel-item <%= "active" if movie.id == @movies.last.id %>">
           <div class="card col-12 dark-gray-6">
             <div class="row g-0 rounded dark-gray-6">
               <div class="mainCard col-md-6">
@@ -63,35 +62,43 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-<% end %>
 
-<% MovieGenre.all.each do |genre| %>
-  <% if Movie.joins(:movie_genre).where(movie_genre: genre.id).count > 0 %>
-    <section class="row mb-3">
-      <h3><%= genre.name %></h3>
-      <div class="media-scroller">
-        <% Movie.where(movie_genre: genre.id).each do |movie| %>
-          <div class="card dark-gray-6 mb-3">
-            <%= image_tag movie.cover_url, class: 'card-img-top' %>
-            <div class="card-body">
-              <strong class="card-title d-block w-100 text-truncate">
-                <%= movie.title %>
-              </strong>
-              <p class="card-text">
-                <b>Diretor: </b>
-                <span><%= movie.director[:name] %></span>
-              </p>
-              <p class="card-text mb-3">
-                <b>Estreia: </b>
-                <span><%=l movie.published_at %></span>
-              </p>
-              <p class="card-text text-wrap text-truncate">
-                <%= movie.sinopse %>
-              </p>
+  <% @movie_genres.each do |genre| %>
+    <% if @movies.joins(:movie_genre).where(movie_genre: genre.id).count > 0 %>
+      <section class="mb-3">
+        <h3><%= genre.name %></h3>
+        <div class="media-scroller gap-3">
+          <% @movies.where(movie_genre: genre.id).each do |movie| %>
+            <div class="card dark-gray-6 mb-3">
+              <div class="card-img-top">
+                <%= image_tag movie.cover_url %>
+              </div>
+              <div class="card-body">
+                <strong class="card-title d-block w-100 text-truncate">
+                  <%= movie.title %>
+                </strong>
+                <p class="card-text">
+                  <b>Diretor: </b>
+                  <span><%= movie.director[:name] %></span>
+                </p>
+                <p class="card-text mb-3">
+                  <b>Estreia: </b>
+                  <span><%=l movie.published_at %></span>
+                </p>
+                <p class="card-text text-wrap text-truncate">
+                  <%= movie.sinopse %>
+                </p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    </section>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
   <% end %>
+<% else %>
+  <section>
+    <p class="text-center">
+      Sem registro de filmes
+    </p>
+  </section>
 <% end %>

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @movies = Movie.last(4).reverse
+    @movie_genres = MovieGenre.all
+    @movies = Movie.all
   end
 end
